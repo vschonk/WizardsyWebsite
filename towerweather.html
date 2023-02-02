@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+
+<body>
+    <h2>
+
+    </h2>
+    <header>
+        <nav class="flex-nav">
+            <a href="main.html" style="text-decoration:none;"><span class="logo royalblue">Wizardsy</span></a>
+            <div class="flex-nav-middle poppins" style="text-decoration:none;">
+                <a href="top5wizards.html">About us</a>
+                <a href="magicgallery.html">Magic Gallery</a>
+                <a href="towerweather.html">Mage Tower Locations</a>
+            </div>
+            <div style="align-self: center;">
+                <a href="form.html"><button class="headerbutton">Contact us!</button></a>
+            </div>
+        </nav>
+    </header>
+
+    <section class="poppins weathersection container white">
+
+        <h2 class="center" style="margin:12px;">Check out the <span style="color:rgb(19, 192, 223);">weather</span> at
+            our wizard
+            towers!</h2>
+        <h1 id="testbox">GESELECTEERD</h1>
+        <div class="column">
+            <label for="City-Select">Select a city!</label>
+            <select name="City" class="Selectbox" id="City-Select" style="width: 40%; background-color: white;"
+                onchange="ChangeCity(value)">
+                <option value="Amsterdam">Amsterdam</option>
+                <option value="Paris">Paris</option>
+                <option value="London">London</option>
+                <option value="Madrid">Madrid</option>
+                <option value="Washington">Washington</option>
+                <option value="Almkerk">Almkerk</option>
+            </select>
+        </div>
+        <div class=weathergrid>
+            <div class="weathergridpicture"><img src="wizardimages/weatherparis.png" alt="" id="weathergridpicture">
+            </div>
+            <div class="flex datelate column">
+                <p id="Date" style="padding: 10px;">Hier komt de datum</p>
+                <div style="display:flex">
+                    <p id="lonlat">Hier komt de lon en lat.</p>
+                </div>
+            </div>
+            <div class="flex column locationtemp">
+                <h2 id="Location">Location</h2>
+                <h2 id="Temperature">Temperature</h2>
+            </div>
+            <div class="icongrid icons">
+                <div id="WeatherColumn" class="columncenter">
+                    <div id="WeatherIcon" class="weathericon circle">
+                        PLACEHOLDER
+                    </div>
+                    <div id="WeatherText">
+                        PLACEHOLDERTEXT
+                    </div>
+                </div>
+                <div id="FeelsColumn" class="columncenter">
+                    <div id="FeelsTemp" class="circle">
+
+                    </div>
+                    <div>
+                        feels like
+                    </div>
+                </div>
+                <div id="WindspeedColumn" class="columncenter">
+                    <div id="WindSpeed" class="circle">
+
+                    </div>
+                    <div>
+                        wind
+                    </div>
+                </div>
+                <div id="RainColumn" class="columncenter">
+                    <div id="RainAmount" class="circle">
+
+                    </div>
+                    <div>
+                        rain
+                    </div>
+                </div>
+            </div>
+            <div class="predictions flex column">
+                <h2 style="color:black; text-align: center;">Most magnificent weather divinations!</h2>
+                <div class="flex column predictioncontainer">
+                    <div class="flex predictionbox">
+                        <div id="day1">Vrijdag</div>
+                        <div id="day1wind">Wind</div>
+                        <div id="day1rain">rain</div>
+                    </div>
+                    <div class="flex predictionbox">
+                        <div id="day2">Zaterdag</div>
+                        <div id="day2wind">Wind</div>
+                        <div id="day2rain">rain</div>
+                    </div>
+                    <div class="flex predictionbox">
+                        <div id="day3">Vrijdag</div>
+                        <div id="day3wind">Wind</div>
+                        <div id="day3rain">rain</div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
+    <footer>
+        <div class="footercontainer poppins">
+            <div style="font-size: 12px">
+                <a href="main.html">
+                    <section class="logo royalblue">Wizardsy</section>
+                </a>
+                lorem ipsum mooie tekst<br>
+                komt goed
+            </div>
+            <div class=footerflex>
+                <a href="">Heel mooi</a>
+                <a href="">Lekker toveren</a>
+                <a href="">Prachtige Linkjes</a>
+            </div>
+        </div>
+    </footer>
+</body>
+<script>
+
+    function ChangeCity(value) {
+        let CityName = value;
+        document.getElementById("testbox").innerHTML = CityName;
+        switch (CityName) {
+            case 'Almkerk':
+                document.getElementById("weathergridpicture").src = "wizardimages/Almkerk_centrum.jpg";
+                LoadCity(51.77, 4.96)
+                break;
+            case 'Paris':
+                document.getElementById("weathergridpicture").src = "wizardimages/weatherparis.png";
+                LoadCity(48.85,2.352)
+                break;
+            case 'Amsterdam':
+                document.getElementById("weathergridpicture").src = "wizardimages/weatheramsterdam.png";
+                LoadCity(52.37,4.89)
+                break;
+            case 'London':
+                document.getElementById("weathergridpicture").src = "wizardimages/weatherlondon.png";
+                LoadCity(48.85,2.35)
+                break;
+            case 'Madrid':
+                document.getElementById("weathergridpicture").src = "wizardimages/weathermadrid.png";
+                LoadCity(40.41,-3.70)
+                break;
+            case 'Washington':
+                document.getElementById("weathergridpicture").src = "wizardimages/weatherwashington.png";
+                LoadCity(38.90,-77.03)
+                break;
+        }
+    }
+    function RainData(rain_data, time){
+        if (rain_data.rain === undefined){
+            return "0 mm"
+        }
+        else{
+            return rain_data.rain["3h"]
+        }
+
+    }
+
+
+    const option = { weekday: "long" }
+    let date = new Date()
+    const API_KEY = "8f56d13b4f20c53be07ec89ba24b5942"
+    const TEST_WEBSITE_LINK = "https://api.openweathermap.org/data/2.5/weather?lat=5.839398&lon=-55.199089&units=metric&appid="
+    const FORECAST_TEST = "https://api.openweathermap.org/data/2.5/forecast?lat=5.839398&lon=-55.199089&units=metric&appid="
+    let WEATHER_DATA
+    /* PLACEHOLDER!!!! */
+
+function LoadCity(lati, loni){
+    let WEBSITE_LINK = `https://api.openweathermap.org/data/2.5/weather?lat=${lati}&lon=${loni}&units=metric&appid=`
+    let FORECAST_LINK = `https://api.openweathermap.org/data/2.5/forecast?lat=${lati}&lon=${loni}&units=metric&appid=`
+    fetch(WEBSITE_LINK + API_KEY).then(
+        data => data.json()
+    )
+        .then(
+            jsondata => {
+                WEATHER_DATA = jsondata
+                console.log(WEATHER_DATA.coord);
+                let shiftDate = new Date(((WEATHER_DATA.dt) + WEATHER_DATA.timezone) * 1000)
+                let lon = WEATHER_DATA.coord.lon;
+                let lat = WEATHER_DATA.coord.lat;
+                let day = shiftDate.getDate();
+                let month = shiftDate.getMonth() + 1;
+                let year = shiftDate.getFullYear();
+                let Weekday = new Intl.DateTimeFormat("nl-NL", option).format(shiftDate)
+                let hour = shiftDate.getHours()
+                let minute = shiftDate.getMinutes()
+                let dateDisplay = `${Weekday} - ${day} - ${month} - ${year} - ${hour}:${minute}`
+
+                document.getElementById("Date").innerHTML = dateDisplay
+                document.getElementById("lonlat").innerHTML = `Longitude: ${lon} en Lattitude: ${lat}`
+                document.getElementById("Temperature").innerHTML = `${WEATHER_DATA.main.temp} &#176;`
+                document.getElementById("Location").innerHTML = WEATHER_DATA.name
+                document.getElementById("WeatherIcon").innerHTML = `<img class="weathericon" src="http://openweathermap.org/img/wn/${WEATHER_DATA.weather[0].icon}@2x.png" alt="">`
+                document.getElementById("WeatherText").innerHTML = WEATHER_DATA.weather[0].description
+                document.getElementById("FeelsTemp").innerHTML = WEATHER_DATA.main.feels_like
+                document.getElementById("WindSpeed").innerHTML = `${WEATHER_DATA.wind.speed} km/h`
+                if (WEATHER_DATA.rain === undefined) {
+                   document.getElementById("RainAmount").innerHTML = "0 mm"
+                }
+                else {
+                    document.getElementById("RainAmount").innerHTML = `${WEATHER_DATA.rain["1h"]} mm`
+                }
+            }
+
+        )
+    fetch(FORECAST_LINK + API_KEY).then(
+        data => data.json()
+    )
+        .then(
+            jsondata => {
+                FORECAST_DATA = jsondata;
+                let futureDate1 = new Date((FORECAST_DATA.list[8].dt) * 1000)
+                let futureDate2 = new Date((FORECAST_DATA.list[16].dt) * 1000)
+                let futureDate3 = new Date((FORECAST_DATA.list[24].dt) * 1000)
+                let Weekday1 = new Intl.DateTimeFormat("nl-NL", option).format(futureDate1)
+                let Weekday2 = new Intl.DateTimeFormat("nl-NL", option).format(futureDate2)
+                let Weekday3 = new Intl.DateTimeFormat("nl-NL", option).format(futureDate3)
+
+                document.getElementById("day1").innerHTML = Weekday1
+                document.getElementById("day1wind").innerHTML = `${FORECAST_DATA.list[8].wind.speed} km/h`
+                document.getElementById("day1rain").innerHTML = RainData(FORECAST_DATA.list[8])
+
+                document.getElementById("day2").innerHTML = Weekday2
+                document.getElementById("day2wind").innerHTML = `${FORECAST_DATA.list[16].wind.speed} km/h`
+                document.getElementById("day2rain").innerHTML = `${RainData(FORECAST_DATA.list[16])} mm`
+
+                document.getElementById("day3").innerHTML = Weekday3
+                document.getElementById("day3wind").innerHTML = `${FORECAST_DATA.list[24].wind.speed} km/h`
+                document.getElementById("day3rain").innerHTML = `${RainData(FORECAST_DATA.list[24])} mm`
+            }
+        )
+}
+
+    /* TESTCALL.temp */
+
+</script>
+
+</html>

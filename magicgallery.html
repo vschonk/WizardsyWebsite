@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Magic Gallery</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+
+<body>
+    <header>
+        <nav class="flex-nav">
+            <a href="main.html" style="text-decoration:none;"><span class="logo royalblue">Wizardsy</span></a>
+            <div class="flex-nav-middle poppins" style="text-decoration:none;">
+                <a href="top5wizards.html">About us</a>
+                <a href="magicgallery.html">Magic Gallery</a>
+                <a href="towerweather.html">Mage Tower Locations</a>
+            </div>
+            <div style="align-self: center;">
+                <a href="form.html"><button class="headerbutton">Contact us!</button></a>
+            </div>
+        </nav>
+    </header>
+
+    <section>
+        <div class="container poppins">
+            <h2 class="center" style="padding: 10px; font-size: 200%;">Try our <span class="royalblue">magical</span>
+                spells!</h2>
+            <div class="grid-container spellgrid">
+                <div class="grid-item"><img src="wizardimages/mango.png" alt="" id="mangospell" onclick="mangospell()">
+                </div>
+                <div class="grid-item"><img src="wizardimages/clock.png" alt="" id="clockspell" onclick="clockspell()">
+                </div>
+                <div class="grid-item"><img src="wizardimages/lightningbolt.png" alt="" id="lightningspell"
+                        onclick="lightningspell()"></div>
+                <div class="grid-item"><img src="wizardimages/nova.png" alt="" id="novaspell" onclick="novaspell()">
+                </div>
+                <div class="grid-item"><img src="wizardimages/powerfulflames.png" alt="" id="firefountainspell"
+                        onclick="firefountainspell()"></div>
+                <div class="grid-item"><img src="wizardimages/gridrock.png" alt="" id="rockspell" onclick="rockspell()">
+                </div>
+                <div class="grid-item"><img src="wizardimages/gridminibar.png" alt="" id="minibarspell"
+                        onclick="minibarspell()"></div>
+                <div class="grid-item"><img src="wizardimages/gridweb.png" alt="" id="webspell" onclick="webspell()">
+                </div>
+                <div class="grid-item"><img src="wizardimages/gridskeleton2.png" alt="" id="skeletonspell"
+                        onclick="skeletonspell()"></div>
+            </div>
+            <h2 class="center hiddentextspell" id="hidden">Reload the page to refresh your <span class="royalblue">Spells</span>!</h2>
+        </div>
+    </section>
+
+
+    <footer>
+        <div class="footercontainer poppins">
+            <div style="font-size: 12px">
+                <a href="main.html">
+                    <section class="logo royalblue">Wizardsy</section>
+                </a>
+                lorem ipsum mooie tekst<br>
+                komt goed
+            </div>
+            <div class=footerflex>
+                <a href="">Heel mooi</a>
+                <a href="">Lekker toveren</a>
+                <a href="">Prachtige Linkjes</a>
+            </div>
+        </div>
+    </footer>
+</body>
+<script>
+    let mangoplayed = false;
+    let clockplayed = false;
+    let lightningplayed = false;
+    let novaplayed = false;
+    let fountainplayed = false;
+    let rockplayed = false;
+    let barplayed = false;
+    let webplayed = false;
+    let skeletonplayed = false;
+    let spellcount = 9;
+    
+    function spellcheck(){
+        if (spellcount==0){
+        console.log("Out of spells!")
+        document.getElementById("hidden").style.display="block"
+        }
+        else{
+            console.log(spellcount)
+        }
+
+    }
+    
+    function mangospell() {
+        if (mangoplayed == false) {
+            console.log("Mango!")
+            let mango = new Audio("audiovideo/mango.mp3")
+            mango.play()
+            mangoplayed = true
+            document.getElementById("mangospell").style.filter = "saturate(0)"
+            spellcount = spellcount-1
+            spellcheck()
+        }
+        else {
+            console.log("Spell already used!")
+        }
+
+    }
+    function clockspell() {
+        if (clockplayed == false) {
+            console.log("Time stop!")
+            let clock = new Audio("audiovideo/Chronosphere.mp3")
+            clock.play()
+            clockplayed = true
+            document.getElementById("clockspell").style.filter = "saturate(0)"
+            spellcount = spellcount-1
+            spellcheck()
+        }
+        else {
+            console.log("Spell already used!")
+        }
+    }
+    function lightningspell() {
+        if (lightningplayed == false) {
+            console.log("Thunder!")
+            let thunder = new Audio("audiovideo/thunder.oga")
+            thunder.play()
+            lightningplayed = true;
+            document.getElementById("lightningspell").style.filter = "saturate(0)"
+            spellcount = spellcount-1
+            spellcheck()
+        }
+        else {
+            console.log("Spell already used!")
+        }
+    }
+    function novaspell() {
+        if (novaplayed == true) {
+            console.log("Spell already used!")
+        }
+        else {
+            console.log("Crystal Nova!")
+            let nova = new Audio("audiovideo/crystalnova.mp3")
+            document.getElementById("novaspell").style.filter = "saturate(0)"
+            nova.play()
+            novaplayed = true
+            spellcount = spellcount-1
+            spellcheck()
+        }
+    }
+    function firefountainspell() {
+        if (fountainplayed == false) {
+            console.log("Fountain of Fire!")
+            let fontein = new Audio("audiovideo/vuurbalk.mp3")
+            fontein.play()
+            fountainplayed = true
+            document.getElementById("firefountainspell").style.filter = "saturate(0)"
+            spellcount = spellcount-1
+            spellcheck()
+        }
+
+        else {
+            console.log("Spell already used!")
+        }
+    }
+    function rockspell() {
+        if (rockplayed == false) {
+            console.log("Tfw you have a quarry to settle.")
+            let steen = new Audio("audiovideo/Avalanche.mp3")
+            steen.play()
+            rockplayed=true
+            document.getElementById("rockspell").style.filter = "saturate(0)"
+            spellcount = spellcount-1
+            spellcheck()
+        }
+
+        else {
+            console.log("Spell already used!")
+        }
+    }
+    function minibarspell() {
+        if (barplayed == false) {
+            console.log("Thirsty!")
+            let bar = new Audio("audiovideo/bar.mp3")
+            bar.play()
+            barplayed=true
+            document.getElementById("minibarspell").style.filter = "saturate(0)"
+            spellcount = spellcount-1
+            spellcheck()
+        }
+
+        else {
+            console.log("Spell already used!")
+        }
+    }
+    function webspell() {
+        if (webplayed == false) {
+            console.log("Web!")
+            let web = new Audio("audiovideo/web.WAV")
+            web.play()
+            webplayed=true
+            document.getElementById("webspell").style.filter = "saturate(0)"
+            spellcount = spellcount-1
+            spellcheck()
+        }
+
+        else {
+            console.log("Spell already used!")
+        }
+    }
+    function skeletonspell() {
+        if (skeletonplayed == false) {
+            console.log("Skeleton! Boo!");
+            let botten = new Audio("audiovideo/skeleton.oga");
+            botten.play();
+            skeletonplayed=true
+            document.getElementById("skeletonspell").style.filter = "saturate(0)"
+            spellcount = spellcount-1
+            spellcheck()
+        }
+
+        else {
+            console.log("Spell already used!")
+        }
+    }
+</script>
+
+</html>
